@@ -1,12 +1,30 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const path = require('path');
 require("dotenv").config();
 
 console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
 
 const app = express();
+
+// Serve static files (frontend) from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// API endpoint for recommendations
+app.post('/recommendations', async (req, res) => {
+  // Your API logic
+});
+
+// All other routes should serve the index.html (your frontend)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 app.use(cors());
 app.use(express.json());
