@@ -4,17 +4,13 @@ const cors = require("cors");
 const path = require('path');
 require("dotenv").config();
 
-console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
+// console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
 
 const app = express();
 
 // Serve static files (frontend) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoint for recommendations
-app.post('/recommendations', async (req, res) => {
-  // Your API logic
-});
 
 // All other routes should serve the index.html (your frontend)
 app.get('*', (req, res) => {
@@ -22,9 +18,6 @@ app.get('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
 app.use(cors());
 app.use(express.json());
@@ -48,6 +41,8 @@ const normalizeRecommendation = (rec) => {
 // Route to fetch movie recommendations
 app.post("/recommendations", async (req, res) => {
   const { movies } = req.body;
+
+  console.log("Received movies: " + toString(movies))
 
   if (!movies || movies.length === 0) {
     return res.status(400).json({ error: "Please provide a list of movies." });
