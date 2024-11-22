@@ -1,5 +1,5 @@
 // Backend URL
-const BACKEND_URL = "http://localhost:3000/recommendations";
+const BACKEND_URL = "/recommendations";
 
 // State for selected movies
 let selectedMovies = [];
