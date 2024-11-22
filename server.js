@@ -19,7 +19,7 @@ app.get('*', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 // Helper function to format movie list
