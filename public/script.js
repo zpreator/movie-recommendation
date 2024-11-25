@@ -70,13 +70,13 @@ document.getElementById("get-recommendations").addEventListener("click", async (
       .map(
         (rec) => `
         <div class="movie">
-          <h3>${rec.title} (${rec.year || "N/A"})</h3>
-          <p>${rec.description}</p>
           ${
             rec.poster
               ? `<img class="poster" src="${rec.poster}" alt="${rec.title}" />`
               : "<p>No poster available</p>"
           }
+          <h3>${rec.title} (${rec.year || "N/A"})</h3>
+          <p>${rec.description}</p>
         </div>
       `
       )

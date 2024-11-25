@@ -73,7 +73,9 @@ app.post("/recommendations", async (req, res) => {
       }
     );
 
-    const recommendations = JSON.parse(openAIResponse.data.choices[0].message.content);
+    const llmResponse = openAIResponse.data.choices[0].message.content;
+    console.log(llmResponse);
+    const recommendations = JSON.parse(llmResponse);
 
     // Normalize the keys to lowercase
     const normalizedRecommendations = [];
